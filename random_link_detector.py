@@ -19,8 +19,11 @@ if __name__ == "__main__":
                 message = slack_message.get("text")
                 user = slack_message.get("user")
                 channel = slack_message.get("channel")
+                ts = slack_message.get("ts")
                 message_string = str(message).strip(' \t\n\r')
                 if (message_string.startswith("<http://") or message_string.startswith("<https://")) and message_string.endswith(">"):
+                    # TODO Get this to work. Why not authorized to delete a message?
+                    delete_response = slack_client.api_call("chat.delete", as_user="true", channel=channel, ts=ts)
                     user_info = slack_client.api_call("users.info", user=user)
                     user_name = user_info.get("user").get("name")
                     slack_client.api_call("chat.postMessage", as_user="true", channel=channel, link_names="true", text=RANDOM_LINK_DETECTED_MESSAGE % user_name)
