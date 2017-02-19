@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 import os
 import time
 from slackclient import SlackClient
@@ -16,11 +19,10 @@ if __name__ == "__main__":
         print("Random Link Detector bot connected and listening for random links!")
         while True:
             for slack_message in slack_client.rtm_read():
-                message = slack_message.get("text")
+                message = unicode(slack_message.get("text")).strip(' \t\n\r')
                 user = slack_message.get("user")
                 channel = slack_message.get("channel")
-                message_string = str(message).strip(' \t\n\r')
-                if (message_string.startswith("<http://") or message_string.startswith("<https://")) and message_string.endswith(">"):
+                if (message.startswith("<http://") or message.startswith("<https://")) and message.endswith(">"):
                     user_info = slack_client.api_call("users.info", user=user)
                     user_name = user_info.get("user").get("name")
                     slack_client.api_call("chat.postMessage", as_user="true", channel=channel, link_names="true", text=RANDOM_LINK_DETECTED_MESSAGE % user_name)
