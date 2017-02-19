@@ -1,19 +1,19 @@
 # Random Link Detector (Slack bot)
 
-Detects the annoying behaviour some people have of posting a link without any description whatsoever and  gives them a slap on the finger!
+Detects the annoying behaviour some people have of posting a link without any description whatsoever and  gives them a slap on the wrist!
 
 
 ## Install
 
-Python 2.x installed (developed with Python 2.7.13).
+Install Python 2.x (developed with Python 2.7.13).
 
-Slack's official Python library:
+Add Slack's official Python library:
 
 `
 pip install SlackClient
 `
 
-Create a Slack bot and export the token:
+Create a new bot in the Slack admin console and export the token:
 
 `
 export SLACK_BOT_TOKEN=[my-token]
