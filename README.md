@@ -32,4 +32,8 @@ https://www.fullstackpython.com/blog/build-first-slack-bot-python.html
 
 ## Run
 
+`
 python random_link_detector.py
+`
+
+Invite the bot to a Slack channel and watch it work its magic!
